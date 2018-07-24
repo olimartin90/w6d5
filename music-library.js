@@ -14,32 +14,29 @@ class Playlist {
   constructor(name) {
     this.name = name;
     this.tracks = [];
-    this.overallRating = 0;
-    this.totalDuration = 0;
   }
 
   addTrack(track) {
     this.tracks.push(track);
   }
 
-  ovallRateFct(track) {
-    this.tracks {
-
-    };
-    let sumAllRate = 0;
-    let overallRate = 0;
-    for (let rate in track) {
-      console.log(rate)
-      let trRate = rate.rating
-      sumAllRate += trRate
+  overallRateFct() {
+    let average = 0;
+    let total = 0;
+    for (let i = 0; i < this.tracks.length; i++) {
+        total += this.tracks[i].rating;
     }
-    console.log(sumAllRate)
-    overallRate = sumAllRate/this.tracks.length;
-    console.log(overallRate)
-    // return this.overallRating = overallRate;
+    average = total / this.tracks.length;
+    return this.overallRating = Math.round(average);
   };
 
-  // ovallrateFct()
+  totalDurationFn() {
+    let total = 0;
+    for (let i = 0; i < this.tracks.length; i++) {
+        total += this.tracks[i].length;
+    }
+    return this.totalDuration = total;
+  }
 
 }
 
@@ -51,25 +48,31 @@ class Track {
   }
 }
 
-// Create a new track
-let newTrack = new Track ('Bro Hymn', 4.8/5, 182);
-// console.log('New Track:', newTrack);
+// new track
+const hellYeah = new Track("Hell Yeah", 2, 110)
+const young = new Track("Young", 5, 95)
+const brohymn = new Track("Bro Hymn", 3, 180)
+console.log("new track : ", hellYeah)
 
-// Create a new playlist
-let newPlaylist = new Playlist ('Bootcamp');
-// console.log('New Playlist:', newPlaylist);
+// new Playlist
+const summerVibe = new Playlist('Summer Vibe');
+console.log("new playlist : ", summerVibe)
 
-// Create a new Library
-let newLibrary = new Library ('My Music', 'Oli Martin');
-// console.log('New Library:', newLibrary);
+// New library
+const iphoneOli = new Library("iphoneOli", "Olivier Martin");
+console.log("New Library : ", iphoneOli)
 
-// Add the new track to playlist
-newPlaylist.addTrack(newTrack);
-console.log('New Playlist:', newPlaylist);
+// push track in Playlist
+summerVibe.addTrack(hellYeah)
+summerVibe.addTrack(young)
+summerVibe.addTrack(brohymn)
+console.log("add track to playlist : ", summerVibe)
 
-// Add the new playlist to library
-newLibrary.addPlaylist(newPlaylist);
-console.log('New Library:', newLibrary);
 
-newPlaylist.ovallRateFct(newPlaylist);
-console.log(newPlaylist);
+// push playlist in Library
+iphoneOli.addPlaylist(summerVibe)
+console.log("Playlist in library : ", iphoneOli);
+
+console.log(summerVibe.overallRateFct())
+console.log(summerVibe.totalDurationFn())
+console.log("Add track to playlist : ", summerVibe)
